@@ -11,13 +11,42 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    let splitViewController = SplitViewController()
+    let masterViewController = MasterViewController()
+    let detailViewController = DetailViewController()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        splitViewController.viewControllers.append(UINavigationController(rootViewController: masterViewController))
+        splitViewController.viewControllers.append(detailViewController)
+        
+        masterViewController.delegate = detailViewController
+        let firstMonster = masterViewController.monsters.first
+        firstMonster?.isSelected = true
+        detailViewController.monster = firstMonster
+        
+        if let windowScene = scene as? UIWindowScene {
+            window = UIWindow(windowScene: windowScene)
+            let controller = splitViewController
+            window?.rootViewController = controller
+            window?.makeKeyAndVisible()
+        }
+        
+//        guard
+//          let splitViewController = window?.rootViewController as? UISplitViewController,
+//          let leftNavController = splitViewController.viewControllers.first
+//            as? UINavigationController,
+//          let masterViewController = leftNavController.viewControllers.first
+//            as? MasterViewController,
+//          let detailViewController = splitViewController.viewControllers.last
+//            as? DetailViewController
+//          else { fatalError() }
+
+        
+//        if UIDevice.current.userInterfaceIdiom == .phone {
+//
+//        }
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
