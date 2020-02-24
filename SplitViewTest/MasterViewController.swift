@@ -63,74 +63,42 @@ class MasterViewController: UITableViewController {
         monster.isSelected = true
         tableView.reloadData()
         
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            if let scene = UIApplication.shared.connectedScenes.first {
-                if let delegate = scene.delegate as? SceneDelegate {
-                    showDetailViewController(delegate.detailViewController, sender: self)
-                }
+        if UIDevice.isPhone {
+            if let delegate = SceneDelegate.current() {
+                showDetailViewController(delegate.detailViewController, sender: self)
             }
         }
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension UISplitViewController {
     func toggleMasterView() {
-        let barButtonItem = displayModeButtonItem
-        guard let action = barButtonItem.action else { return }
-        guard let target = barButtonItem.target else { return }
+        guard let action = displayModeButtonItem.action else { return }
+        guard let target = displayModeButtonItem.target else { return }
         UIApplication.shared.sendAction(action, to: target, from: nil, for: nil)
     }
 }
 
 extension Array where Element : Selectable {
     func clearSelected() {
-        self.forEach { $0.isSelected = false }
+        forEach { $0.isSelected = false }
+    }
+}
+
+extension SceneDelegate {
+    static func current() -> SceneDelegate? {
+        if let scene = UIApplication.shared.connectedScenes.first {
+            if let delegate = scene.delegate as? SceneDelegate {
+                return delegate
+            }
+        }
+        return nil
+    }
+}
+
+extension UIDevice {
+    static var isPhone: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
     }
 }

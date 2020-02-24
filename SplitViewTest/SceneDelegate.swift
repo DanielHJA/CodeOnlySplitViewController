@@ -32,21 +32,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.makeKeyAndVisible()
         }
         
-//        guard
-//          let splitViewController = window?.rootViewController as? UISplitViewController,
-//          let leftNavController = splitViewController.viewControllers.first
-//            as? UINavigationController,
-//          let masterViewController = leftNavController.viewControllers.first
-//            as? MasterViewController,
-//          let detailViewController = splitViewController.viewControllers.last
-//            as? DetailViewController
-//          else { fatalError() }
-
-        
-//        if UIDevice.current.userInterfaceIdiom == .phone {
-//
-//        }
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
