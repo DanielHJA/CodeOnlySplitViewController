@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
     let splitViewController = SplitViewController()
@@ -19,11 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         splitViewController.viewControllers.append(UINavigationController(rootViewController: masterViewController))
         splitViewController.viewControllers.append(detailViewController)
-        
+        splitViewController.delegate = self
         masterViewController.delegate = detailViewController
-        let firstMonster = masterViewController.monsters.first
-        firstMonster?.isSelected = true
-        detailViewController.monster = firstMonster
+        
+        if !UIDevice.isPhone {
+            let firstMonster = masterViewController.monsters.first
+            firstMonster?.isSelected = true
+            detailViewController.monster = firstMonster
+        }
         
         if let windowScene = scene as? UIWindowScene {
             window = UIWindow(windowScene: windowScene)
@@ -33,6 +36,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
     }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
