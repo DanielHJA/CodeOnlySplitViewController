@@ -12,8 +12,12 @@ protocol Selectable: class {
     var isSelected: Bool { get set }
 }
 
-enum Weapon {
-    case blowgun, ninjaStar, fire, sword, smoke
+enum Weapon: String, Decodable {
+    case blowgun = "blowgun"
+    case ninjaStar = "ninjaStar"
+    case fire = "fire"
+    case sword = "sword"
+    case smoke = "smoke"
     
     var image: UIImage {
         switch self {
@@ -31,13 +35,29 @@ enum Weapon {
     }
 }
 
-class Monster: Selectable {
+class Monster: Selectable, Decodable {
     
     let name: String
     let description: String
     let iconName: String
     let weapon: Weapon
     var isSelected = false
+    
+    private enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case description = "description"
+        case iconName = "iconName"
+        case weapon = "weapon"
+        case isSelected = "isSelected"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        description = try container.decode(String.self, forKey: .description)
+        iconName = try container.decode(String.self, forKey: .iconName)
+        weapon = try container.decode(Weapon.self.self, forKey: .weapon)
+    }
     
     init(name: String, description: String, iconName: String, weapon: Weapon) {
         self.name = name

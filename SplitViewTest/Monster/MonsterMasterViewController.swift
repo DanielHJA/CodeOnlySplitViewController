@@ -12,9 +12,10 @@ protocol MonsterSelectionDelegate: class {
     func didSelectMonster(_ monster: Monster)
 }
 
-class MasterViewController: UITableViewController {
+class MonsterMasterViewController: UITableViewController {
     
     weak var delegate: MonsterSelectionDelegate?
+    weak var detailViewController: MonsterDetailViewController?
 
     let monsters = [
       Monster(name: "Cat-Bot", description: "MEE-OW",
@@ -64,41 +65,9 @@ class MasterViewController: UITableViewController {
         tableView.reloadData()
         
         if UIDevice.isPhone {
-            if let delegate = SceneDelegate.current() {
-                showDetailViewController(delegate.detailViewController, sender: self)
-            }
+            guard let detailViewController = detailViewController else { return }
+            showDetailViewController(detailViewController, sender: nil)
         }
     }
     
-}
-
-extension UISplitViewController {
-    func toggleMasterView() {
-        guard let action = displayModeButtonItem.action else { return }
-        guard let target = displayModeButtonItem.target else { return }
-        UIApplication.shared.sendAction(action, to: target, from: nil, for: nil)
-    }
-}
-
-extension Array where Element : Selectable {
-    func clearSelected() {
-        forEach { $0.isSelected = false }
-    }
-}
-
-extension SceneDelegate {
-    static func current() -> SceneDelegate? {
-        if let scene = UIApplication.shared.connectedScenes.first {
-            if let delegate = scene.delegate as? SceneDelegate {
-                return delegate
-            }
-        }
-        return nil
-    }
-}
-
-extension UIDevice {
-    static var isPhone: Bool {
-        return UIDevice.current.userInterfaceIdiom == .phone
-    }
 }

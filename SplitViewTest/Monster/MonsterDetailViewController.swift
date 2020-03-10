@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class MonsterDetailViewController: UIViewController {
     
     var monster: Monster? {
         didSet {
@@ -30,12 +30,11 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
     }
     
 }
 
-extension DetailViewController: MonsterSelectionDelegate {
+extension MonsterDetailViewController: MonsterSelectionDelegate {
     func didSelectMonster(_ monster: Monster) {
         self.monster = monster
     }

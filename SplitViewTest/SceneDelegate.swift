@@ -11,30 +11,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    let splitViewController = SplitViewController()
-    let masterViewController = MasterViewController()
-    let detailViewController = DetailViewController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        splitViewController.viewControllers.append(UINavigationController(rootViewController: masterViewController))
-        splitViewController.viewControllers.append(detailViewController)
-        splitViewController.delegate = self
-        masterViewController.delegate = detailViewController
-        
-        if !UIDevice.isPhone {
-            let firstMonster = masterViewController.monsters.first
-            firstMonster?.isSelected = true
-            detailViewController.monster = firstMonster
-        }
-        
         if let windowScene = scene as? UIWindowScene {
             window = UIWindow(windowScene: windowScene)
-            let controller = splitViewController
+            let controller = BaseTabbarViewController()
             window?.rootViewController = controller
             window?.makeKeyAndVisible()
         }
-        
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
