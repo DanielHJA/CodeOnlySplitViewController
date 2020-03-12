@@ -43,6 +43,10 @@ class Monster: Selectable, Decodable {
     let weapon: Weapon
     var isSelected = false
     
+    lazy var descriptionString: String = {
+          return "This is \(name). He is wielding a \(weapon)"
+      }()
+    
     private enum CodingKeys: String, CodingKey {
         case name = "name"
         case description = "description"

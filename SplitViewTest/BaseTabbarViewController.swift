@@ -28,10 +28,10 @@ class BaseTabbarViewController: UITabBarController, UISplitViewControllerDelegat
     private func configureGroupOne() {
         m1Master.detailViewController = m1Detail
         m1Master.delegate = m1Detail
-        if !UIDevice.isPhone {
-            let firstMonster = m1Master.monsters.first
+        if !UIDevice.isPhone { 
+            let firstMonster = m1Master.viewModel.objects.first
             firstMonster?.isSelected = true
-            m1Detail.monster = firstMonster
+            m1Detail.object = firstMonster
         }
     }
     

@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7B63CDE42416715500A6DBE4 /* BaseTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B63CDE32416715500A6DBE4 /* BaseTabbarViewController.swift */; };
+		7B65476C241A59B10052FD51 /* BaseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65476B241A59B10052FD51 /* BaseDetailViewController.swift */; };
+		7B65476E241A5A4A0052FD51 /* BaseMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65476D241A5A4A0052FD51 /* BaseMasterTableViewController.swift */; };
+		7B654770241A5B640052FD51 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B65476F241A5B640052FD51 /* BaseViewModel.swift */; };
 		7B6E97F82417824D00A8F25A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6E97F72417824D00A8F25A /* Extensions.swift */; };
+		7B90EE6424192C2300F9BBA4 /* MonsterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B90EE6324192C2300F9BBA4 /* MonsterViewModel.swift */; };
+		7B90EE662419346F00F9BBA4 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B90EE652419346F00F9BBA4 /* MockData.swift */; };
 		7BBD0A2D240004D50088DBA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD0A2C240004D50088DBA4 /* AppDelegate.swift */; };
 		7BBD0A2F240004D50088DBA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD0A2E240004D50088DBA4 /* SceneDelegate.swift */; };
 		7BBD0A37240004D50088DBA4 /* SplitViewTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD0A35240004D50088DBA4 /* SplitViewTest.xcdatamodeld */; };
@@ -40,7 +45,12 @@
 
 /* Begin PBXFileReference section */
 		7B63CDE32416715500A6DBE4 /* BaseTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarViewController.swift; sourceTree = "<group>"; };
+		7B65476B241A59B10052FD51 /* BaseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDetailViewController.swift; sourceTree = "<group>"; };
+		7B65476D241A5A4A0052FD51 /* BaseMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMasterTableViewController.swift; sourceTree = "<group>"; };
+		7B65476F241A5B640052FD51 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		7B6E97F72417824D00A8F25A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7B90EE6324192C2300F9BBA4 /* MonsterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterViewModel.swift; sourceTree = "<group>"; };
+		7B90EE652419346F00F9BBA4 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		7BBD0A29240004D50088DBA4 /* SplitViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BBD0A2C240004D50088DBA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BBD0A2E240004D50088DBA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 				7BBD0A61240008930088DBA4 /* MonsterDetailViewController.swift */,
 				7BBD0A63240009D00088DBA4 /* Monster.swift */,
 				7BBD0A5F2400074D0088DBA4 /* MonsterMasterViewController.swift */,
+				7B90EE6324192C2300F9BBA4 /* MonsterViewModel.swift */,
 			);
 			path = Monster;
 			sourceTree = "<group>";
@@ -119,7 +130,11 @@
 			children = (
 				7BBD0A2C240004D50088DBA4 /* AppDelegate.swift */,
 				7BBD0A2E240004D50088DBA4 /* SceneDelegate.swift */,
+				7B65476B241A59B10052FD51 /* BaseDetailViewController.swift */,
+				7B65476F241A5B640052FD51 /* BaseViewModel.swift */,
 				7B63CDE32416715500A6DBE4 /* BaseTabbarViewController.swift */,
+				7B65476D241A5A4A0052FD51 /* BaseMasterTableViewController.swift */,
+				7B90EE652419346F00F9BBA4 /* MockData.swift */,
 				7B63CDE52416727A00A6DBE4 /* Monster */,
 				7BBD0A38240004D80088DBA4 /* Assets.xcassets */,
 				7B6E97F72417824D00A8F25A /* Extensions.swift */,
@@ -282,10 +297,15 @@
 				7BBD0A37240004D50088DBA4 /* SplitViewTest.xcdatamodeld in Sources */,
 				7BBD0A62240008930088DBA4 /* MonsterDetailViewController.swift in Sources */,
 				7B6E97F82417824D00A8F25A /* Extensions.swift in Sources */,
+				7B65476E241A5A4A0052FD51 /* BaseMasterTableViewController.swift in Sources */,
 				7BBD0A2D240004D50088DBA4 /* AppDelegate.swift in Sources */,
 				7BBD0A64240009D00088DBA4 /* Monster.swift in Sources */,
+				7B654770241A5B640052FD51 /* BaseViewModel.swift in Sources */,
+				7B90EE6424192C2300F9BBA4 /* MonsterViewModel.swift in Sources */,
 				7BBD0A2F240004D50088DBA4 /* SceneDelegate.swift in Sources */,
 				7B63CDE42416715500A6DBE4 /* BaseTabbarViewController.swift in Sources */,
+				7B65476C241A59B10052FD51 /* BaseDetailViewController.swift in Sources */,
+				7B90EE662419346F00F9BBA4 /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
